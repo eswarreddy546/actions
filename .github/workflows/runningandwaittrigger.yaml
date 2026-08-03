@@ -1,4 +1,4 @@
-name: Timeout Example
+name: runningandwaittrigger
 
 on: [push]
 concurrency:
