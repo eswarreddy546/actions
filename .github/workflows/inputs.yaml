@@ -1,0 +1,43 @@
+name: Workflow Inputs Demo
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Enter your name"
+        required: true
+        default: "Eswar"
+        type: string
+
+      environment:
+        description: "Select Environment"
+        required: true
+        default: dev
+        type: choice
+        options:
+          - dev
+          - qa
+          - prod
+
+      deploy:
+        description: "Deploy Application?"
+        required: true
+        default: false
+        type: boolean
+
+      aws_environment:
+        description: "Select GitHub Environment"
+        required: true
+        type: environment
+
+jobs:
+  input-demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print All Inputs
+        run: |
+          echo "Name          : ${{ inputs.name }}"
+          echo "Environment   : ${{ inputs.environment }}"
+          echo "Deploy        : ${{ inputs.deploy }}"
+          echo "GitHub Env    : ${{ inputs.aws_environment }}"
