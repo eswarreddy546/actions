@@ -8,9 +8,12 @@ jobs:
         run: echo "Hello, world!"
 
       - name: trigger PROD deploy
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads'
         run: echo "deploy to PROD"
 
       - name: trigger DEV deploy
         if: github.ref == 'refs/heads/feature-*'
         run: echo "deploy to DEV"
+
+      - name: not trigger PROD and DEV deploy
+        run: echo "deploy not avalible "
